@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useAuth } from "./useAuth";
 
 export default function useSignup(url) {
+    const { setUser } = useAuth(); // Use the context's setUser function to update auth state
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false); // Changed to false by default
 
@@ -22,7 +24,8 @@ export default function useSignup(url) {
             }
 
             // Save user data to localStorage
-            localStorage.setItem("user", JSON.stringify(user));
+            // localStorage.setItem("user", JSON.stringify(user));
+            setUser({ email: user.email, token: user.token }); // Use setUser to update context
 
             setIsLoading(false);
             return user; // Return user data on success
