@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import LoadingSpinner from "./LoadingSpinner";
-import { useContext } from "react";
-import ThemeContext from "../contexts/ThemeContext";
-import AuthContext from "../contexts/AuthContext";
+// import { useContext } from "react";
+// import ThemeContext from "../contexts/ThemeContext";
+// import AuthContext from "../contexts/AuthContext";
+import { useTheme } from "../hooks/useTheme";
+import { useAuth } from "../hooks/useAuth";
 
 const Navbar = () => {
-  const { toggleTheme } = useContext(ThemeContext);
-  const { isAuthenticated, clearUser, email, isLoading } =
-    useContext(AuthContext); // Access Auth
+  const { toggleTheme } = useTheme();
+  const { isAuthenticated, clearUser, email, isLoading } = useAuth(); // Access Auth
 
   // const isAuthenticated = false;
 
